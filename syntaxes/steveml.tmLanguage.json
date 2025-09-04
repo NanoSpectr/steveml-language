@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Steve Markup Language",
+  "scopeName": "source.steveml",
+  "patterns": [
+    {
+      "include": "#main"
+    }
+  ],
+  "repository": {
+    "main": {
+      "patterns": [
+        {
+          "comment": "Scene Headers like ##MY_SCENE",
+          "match": "^(##)(.*)$",
+          "captures": {
+            "1": { "name": "keyword.control.steveml" },
+            "2": { "name": "entity.name.function.steveml" }
+          }
+        },
+        {
+          "comment": "System Calls like ::GOTO::SCENE or ::SET::VAR::TRUE",
+          "match": "^(\\s*)(::)(GOTO|SET|IF|ELIF|ELSE|ENDIF)(::)([^:]+)?(::)?([^:]+)?",
+          "captures": {
+            "2": { "name": "punctuation.definition.tag.steveml" },
+            "3": { "name": "keyword.control.flow.steveml" },
+            "4": { "name": "punctuation.definition.tag.steveml" },
+            "5": { "name": "variable.parameter.steveml" },
+            "6": { "name": "punctuation.definition.tag.steveml" },
+            "7": { "name": "constant.language.boolean.steveml" }
+          }
+        },
+        {
+          "comment": "User input options like <<choice>>",
+          "begin": "<<",
+          "end": ">>",
+          "name": "string.quoted.double.steveml",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.string.begin.steveml" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.steveml" }
+          }
+        },
+        {
+          "comment": "Actors, indented once",
+          "match": "^(\\s{4}|\\t)(?!\\s|:|<)([a-zA-Z0-9_ ]+)",
+          "captures": {
+            "2": { "name": "entity.name.tag.steveml" }
+          }
+        },
+        {
+          "comment": "Special markup like [[Dawnridge]]",
+          "begin": "\\[\\[",
+          "end": "\\]\\]",
+          "name": "markup.underline.link.steveml",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.steveml" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.steveml" }
+          }
+        },
+        {
+          "comment": "Tooltips like ((Small town...))",
+          "begin": "\\(\\(",
+          "end": "\\)\\)",
+          "name": "comment.block.documentation.steveml",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.comment.steveml" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.comment.steveml" }
+          }
+        },
+        {
+          "comment": "Variables like {{self}}",
+          "begin": "\\{\\{",
+          "end": "\\}\\}",
+          "name": "variable.language.steveml",
+          "beginCaptures": {
+            "0": { "name": "punctuation.definition.variable.begin.steveml" }
+          },
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.variable.end.steveml" }
+          }
+        }
+      ]
+    }
+  }
+}

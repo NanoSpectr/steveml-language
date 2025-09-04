@@ -1,0 +1,25 @@
+{
+  "name": "steveml-language",
+  "displayName": "steveml-language",
+  "description": "Syntax highlighting for Steve Markup Language",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "steveml",
+      "aliases": ["Steve Markup Language", "steveml"],
+      "extensions": [".steveml"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "steveml",
+      "scopeName": "source.steveml",
+      "path": "./syntaxes/steveml.tmLanguage.json"
+    }]
+  }
+}
